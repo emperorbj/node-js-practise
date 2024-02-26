@@ -184,6 +184,34 @@ else if(request.method="put" && parsedUrl.pathname=="/products")
 
     }
 
+        else if(request.method="DELETE" && parsedUrl.pathname=="/products")
+    {
+        let ID = parsedUrl.query.id;
+        //CONVERTS FILE FROM STRING TO JSON
+        let productsArray = JSON.parse(file)
+        // FINDS THE INDEX OF THE ARRAY OF PRODUCTS ACCORDIND TO THE id THAT 
+        // MATCHES THE ID IN THE QUERY PARAMETERS AND STORES IT IN "INDEX"
+        let index = productsArray.findIndex((product)=>
+        {
+            return product.id == ID
+
+        })
+        // THIS REMOVES ANY ELEMENT IN THE PRODUCT ARRAY WITH THE INDEX SPECIFIED
+        productsArray.splice(index,1);
+        // THIS OVERWRITES EXISTING "data.json" file WITH A NEW ONE THAT HAS A PRODUCT DELETED ACCORDING TO THEIR INDEX AND ID
+        fs.writeFile('./data.json', JSON.stringify(productsArray),(err)=>
+        {
+            if(err==null)
+            {
+                response.end(JSON.stringify({"message":"product successfully deleted"}))
+            }
+            else
+            {
+                response.end(JSON.stringify({"message":"product could not deleted"}))
+            }
+        })
+    }
+
 
 })
 server3.listen(port,hostName,()=>{
