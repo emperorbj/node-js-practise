@@ -1,0 +1,42 @@
+[
+    {
+        "id": "0",
+        "productName": "tainted carrot",
+        "product": "🥕",
+        "organic": true,
+        "nutrients": "vitamin C, vitamin K and carotene",
+        "application": "can be used in cooking and making cosmetic products"
+    },
+    {
+        "id": "1",
+        "productName": "apple",
+        "product": "🍏",
+        "organic": true,
+        "nutrients": "vitamin C, vitamin K and antioxidants",
+        "application": "can be used in cidar drinks and making fruit juices"
+    },
+    {
+        "id": "2",
+        "productName": "tomatoes",
+        "product": "🍅",
+        "organic": false,
+        "nutrients": "vitamin C, vitamin K and capaicin",
+        "application": "can be used in cooking and has medical benefits"
+    },
+    {
+        "id": "5",
+        "productName": "Avocado pear",
+        "product": " 🥑",
+        "organic": true,
+        "nutrients": "vitamin C, vitamin K, fats and calcium and minerals",
+        "application": "can be used in cooking and a health supplement"
+    },
+    {
+        "id": "3",
+        "productName": "Fresh cucumber",
+        "product": "🥒",
+        "organic": true,
+        "nutrients": "fibres, antioxidants and water",
+        "application": "can be used in cooking and as a health supplement"
+    }
+]
