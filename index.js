@@ -100,7 +100,7 @@ const server3 = http.createServer((request,response)=>{
         response.end(file)
         console.log(parsedUrl)
     }
-    else if(parsedUrl.pathname == '/products' && request.method == 'GET' && parsedUrl.query.id!=undefined){
+else if(parsedUrl.pathname == '/products' && request.method == 'GET' && parsedUrl.query.id!=undefined){
         let productFile = JSON.parse(file)
         let product = productFile.find((product)=>{
             return product.id==parsedUrl.query.id;
@@ -117,6 +117,47 @@ const server3 = http.createServer((request,response)=>{
             response.end('<h1>404 ERROR PAGE NOT FOUND</h1>')
         }
 }
+
+else if(request.method="put" && parsedUrl.pathname=="/products")
+    {
+        let id = parsedUrl.query.id;
+        let product = '';
+        request.on('data',(chunk)=>
+        {
+            product+=chunk;
+        })
+
+        request.on('end',()=>{
+            let productsArray = JSON.parse(file);
+            let productOBJ = JSON.parse(product);
+
+            let index = productsArray.findIndex((product)=>{
+                return product.id==parsedUrl.query.id
+            })
+
+            if(index!== -1)
+            {
+                productsArray[index]=productOBJ;
+
+                fs.writeFile('./data.json', JSON.stringify(productsArray),(err)=>
+                {
+                    if(err==null)
+                    {
+                        response.end(JSON.stringify({"message":"product successfully updated"}))
+                    }
+                    else
+                    {
+                        response.end(JSON.stringify({"message":"product could not update"}))
+                    }
+                })
+            }
+
+            else
+            {
+                response.end(JSON.stringify({"message":"some problems"}))
+            }
+        })
+    }
     else if(request.method=='POST' && parsedUrl.pathname=='/products'){
         let postProduct = '';
         request.on('data',(chunk)=>{
