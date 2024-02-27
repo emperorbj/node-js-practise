@@ -94,7 +94,7 @@ const url = require('url')
 const server3 = http.createServer((request,response)=>{
     
     let parsedUrl = url.parse(request.url, true);
-    response.setHeader
+    response.setHeader("Access-control-Allow-Origin", "*");
 
     if(parsedUrl.pathname == '/products' && request.method == 'GET' && parsedUrl.query.id===undefined){
         response.writeHead(200,{'content-type':'application/json'})
