@@ -94,6 +94,7 @@ const url = require('url')
 const server3 = http.createServer((request,response)=>{
     
     let parsedUrl = url.parse(request.url, true);
+    // CORS Protocols
     response.setHeader("Access-control-Allow-Origin", "*");
 
     if(parsedUrl.pathname == '/products' && request.method == 'GET' && parsedUrl.query.id===undefined){
