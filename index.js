@@ -120,7 +120,7 @@ else if(parsedUrl.pathname == '/products' && request.method == 'GET' && parsedUr
             response.end('<h1>404 ERROR PAGE NOT FOUND</h1>')
         }
 }
-
+// Making a put  request 
 else if(request.method="put" && parsedUrl.pathname=="/products")
     {
         let id = parsedUrl.query.id;
@@ -161,6 +161,7 @@ else if(request.method="put" && parsedUrl.pathname=="/products")
             }
         })
     }
+    // Making a post  request
     else if(request.method=='POST' && parsedUrl.pathname=='/products'){
         let postProduct = '';
         request.on('data',(chunk)=>{
@@ -186,7 +187,7 @@ else if(request.method="put" && parsedUrl.pathname=="/products")
         response.end('post request working')
 
     }
-
+    // Making a delete  request 
         else if(request.method="DELETE" && parsedUrl.pathname=="/products")
     {
         let ID = parsedUrl.query.id;
