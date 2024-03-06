@@ -96,7 +96,7 @@ const server3 = http.createServer((request,response)=>{
     let parsedUrl = url.parse(request.url, true);
     // CORS Protocols
     response.setHeader("Access-control-Allow-Origin", "*");
-
+    // Making a get request
     if(parsedUrl.pathname == '/products' && request.method == 'GET' && parsedUrl.query.id===undefined){
         response.writeHead(200,{'content-type':'application/json'})
         response.end(file)
