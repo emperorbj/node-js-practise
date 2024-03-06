@@ -102,6 +102,7 @@ const server3 = http.createServer((request,response)=>{
         response.end(file)
         console.log(parsedUrl)
     }
+        //Making a get request with an id query parameter
 else if(parsedUrl.pathname == '/products' && request.method == 'GET' && parsedUrl.query.id!=undefined){
         let productFile = JSON.parse(file)
         let product = productFile.find((product)=>{
